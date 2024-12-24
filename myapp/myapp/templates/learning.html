@@ -1,0 +1,31 @@
+
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Learning Page</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
+</head>
+<body>
+    <h1>Welcome to the Learning Page</h1>
+    <nav>
+        <a href="/">Home</a> |
+        <a href="/about/">About</a> |
+        <a href="/services/">Services</a> |
+        <a href="/contact/">Contact</a> |
+        <a href="/careers/">Careers</a> |
+        <a href="/help/">help</a> |
+        <a href="/learning/">Learning</a>
+    </nav>
+    <p>This is a simple learning page where you can explore various resources and tutorials.</p>
+    <ul>
+        <li><a href="/learning/python/">Python Tutorials</a></li>
+        <li><a href="/learning/django/">Django Tutorials</a></li>
+        <li><a href="/learning/html-css/">HTML & CSS Tutorials</a></li>
+        <li><a href="/learning/js/">JavaScript Tutorials</a></li>
+    </ul>
+</body>
+</html>
