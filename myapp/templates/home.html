@@ -1,26 +1,74 @@
-{% load static %}
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Home Page</title>
-    <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
-</head>
-<body>
+{% extends "base.html" %}
+
+{% block title %}Home Page{% endblock %}
+
+{% block content %}
     <h1>Welcome to the Home Page</h1>
     <nav>
         <a href="/">Home</a> |
         <a href="/about/">About us</a> |
         <a href="/services/">Services</a> |
-        <a href="/contact/">Contact us</a>
-        <a href="/careers/">Careers</a>
-        <a href="/help/">help</a>
+        <a href="/contact-us/">Contact us</a> |
+        <a href="/careers/">Careers</a> |
+        <a href="/help/">Help</a> |
         <a href="/learning/">Learning</a>
-
-
-
     </nav>
-    <p>This is the home page of our Django project.</p>
-</body>
-</html>
+
+    <button onclick="toggleMission()">Show Mission Statement</button>
+    <p id="mission" style="display: none;">
+        At <a href="/TechSol/">TechSol</a>, our mission is to empower businesses and individuals with innovative, reliable, and scalable IT solutions. 
+        We are dedicated to driving digital transformation through cutting-edge technology, exceptional service, and a commitment to excellence.
+    </p>
+
+    <!-- Services Overview Section -->
+    <section id="services">
+        <h2>Our Services</h2>
+        <ul>
+            <li>Custom Software Development</li>
+            <li>Cloud Solutions</li>
+            <li>IT Consulting</li>
+            <li>Mobile App Development</li>
+            <li>Cybersecurity Solutions</li>
+        </ul>
+    </section>
+
+    <!-- Success Stories Section -->
+    <section id="success-stories">
+        <h2>Success Stories</h2>
+        <div class="story">
+            <h3>Client A</h3>
+            <p>With our custom software solutions, Client A increased their operational efficiency by 40% and improved customer satisfaction.</p>
+        </div>
+        <div class="story">
+            <h3>Client B</h3>
+            <p>Our cloud solutions helped Client B scale their business rapidly while maintaining a high level of security and reliability.</p>
+        </div>
+    </section>
+
+    <!-- Slideshow Section -->
+
+    {% load static %}
+    <section id="slideshow">
+        <h2>Our Achievements</h2>
+        <div class="slideshow-container">
+            <div class="slide fade">
+                <img src="{% static 'images/achievement1.jpg' %}" alt="Achievement 1">
+                <div class="text">Awarded Best IT Solution Provider 2024</div>
+            </div>
+            <div class="slide fade">
+                <img src="{% static 'images/achievement2.jpg' %}" alt="Achievement 2">
+                <div class="text">500+ Successful Projects Delivered</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Call-to-Action Section -->
+    <section id="call-to-action">
+        <h2>Ready to Transform Your Business?</h2>
+        <p>Contact us today to learn how we can help you achieve your goals with our innovative IT solutions.</p>
+        <button id="cta-button">Get Started</button>
+    </section>
+
+    <!-- Include JS at the Bottom -->
+    <script src="{% static 'main.js' %}"></script>
+{% endblock %}

@@ -1,3 +1,5 @@
+{% extends "base.html" %}
+
 {% load static %}
 <!DOCTYPE html>
 <html lang="en">
@@ -8,12 +10,16 @@
     <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
 </head>
 <body>
+
+    {% block title %}Help Page{% endblock %}
+
+    {% block content %}
     <h1>Help Center</h1>
     <nav>
         <a href="/">Home</a> |
         <a href="/about/">About us</a> |
         <a href="/services/">Services</a> |
-        <a href="/contact/">Contact us</a> |
+        <a href="/contact-us/">Contact us</a> |
         <a href="/careers/">Careers</a> |
         <a href="/help/">Help</a>
         <a href="/learning/">Learning</a>
@@ -29,4 +35,6 @@
         </ul>
     </section>
 </body>
+
+    {% endblock %}
 </html>

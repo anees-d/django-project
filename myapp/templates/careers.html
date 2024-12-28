@@ -1,19 +1,28 @@
-{% load static %}
+{% extends "base.html"%}
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
+
+    {% load static %}
+
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Careers</title>
     <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
 </head>
 <body>
+
+
+{% block title %}Careers Page{% endblock %}
+
+{% block content %}
     <h1>Careers</h1>
     <nav>
         <a href="/">Home</a> |
         <a href="/about/">About us</a> |
         <a href="/services/">Services</a> |
-        <a href="/contact/">Contact us</a> |
+        <a href="/contact-us/">Contact us</a> |
         <a href="/careers/">Careers</a>
         <a href="/help/">help</a>
         <a href="/learning/">Learning</a>
@@ -30,4 +39,6 @@
     </ul>
     <p>If you're interested in any of these roles, please send your resume to <a href="mailto:careers@example.com">careers@example.com</a>.</p>
 </body>
+
+{% endblock %}
 </html>

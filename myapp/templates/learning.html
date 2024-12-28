@@ -1,3 +1,4 @@
+{% extends "base.html" %}
 
 {% load static %}
 
@@ -10,12 +11,16 @@
     <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
 </head>
 <body>
+
+    {% block title %}Careers Page{% endblock %}
+
+    {% block content %}
     <h1>Welcome to the Learning Page</h1>
     <nav>
         <a href="/">Home</a> |
         <a href="/about/">About</a> |
         <a href="/services/">Services</a> |
-        <a href="/contact/">Contact</a> |
+        <a href="/contact-us/">Contact</a> |
         <a href="/careers/">Careers</a> |
         <a href="/help/">help</a> |
         <a href="/learning/">Learning</a>
@@ -28,4 +33,6 @@
         <li><a href="/learning/js/">JavaScript Tutorials</a></li>
     </ul>
 </body>
+
+    {% endblock %}
 </html>

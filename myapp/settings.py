@@ -121,7 +121,12 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/5.1/howto/static-files/
 
 STATIC_URL = '/static/'
-STATICFILES_DIRS = [BASE_DIR / 'static']
+
+# Specify the directory containing your static files
+STATICFILES_DIRS = [
+    r"E:\django-project\myapp\static",  # Use raw string (r"") for Windows paths
+]
+
 
 
 
@@ -129,3 +134,4 @@ STATICFILES_DIRS = [BASE_DIR / 'static']
 # https://docs.djangoproject.com/en/5.1/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'myapp.settings')

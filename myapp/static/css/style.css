@@ -11,7 +11,7 @@ body {
 h1 {
     color: #2c3e50;
     text-align: center;
-    margin-top: 50px;
+    margin-top: 10px;
     font-size: 36px;
     font-weight: bold;
     text-transform: uppercase;
@@ -33,7 +33,7 @@ nav a {
     font-weight: bold;
     font-size: 18px;
     padding: 10px 20px;
-    border-radius: 5px;
+    border-radius: 3px;
     transition: background-color 0.3s ease, color 0.3s ease;
 }
 
@@ -52,29 +52,243 @@ p {
     width: 80%;
 }
 
-/* Footer Style */
+/* Footer Container */
+footer {
+    background-color: #2c3e50;
+    color: white;
+    padding: 5px 10px; /* Reduced padding */
+    font-size: 12px; /* Reduced font size */
+}
+
+/* Footer Links Section */
+.footer-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin: 0 5%;
+    gap: 5px; /* Reduced gap between link groups */
+}
+
+/* Individual Link Group */
+.footer-links h4 {
+    font-size: 16px; /* Reduced heading size */
+    margin-bottom: 5px; /* Reduced bottom margin */
+    font-weight: bold;
+}
+
+.footer-links ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+}
+
+.footer-links li {
+    margin: 3px 0; /* Reduced vertical margin */
+}
+
+.footer-links a {
+    text-decoration: none;
+    color: white;
+    font-size: 12px; /* Reduced font size */
+    transition: color 0.3s ease-in-out;
+}
+
+.footer-links a:hover {
+    color: #1abc9c;
+}
+
+/* Footer Bottom Section */
+.footer-bottom {
+    text-align: center;
+    background-color: #1a252f;
+    padding: 3px 0; /* Reduced padding */
+    font-size: 10px; /* Reduced font size */
+    margin-top: 5px; /* Added small top margin */
+}
+
+/* Responsive Design for Smaller Screens */
+@media (max-width: 768px) {
+    .footer-container {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        gap: 10px; /* Kept minimal space between items */
+    }
+
+    .footer-links {
+        margin-bottom: 5px; /* Reduced bottom margin */
+    }
+}
+
+/* Reset Body and HTML */
+html, body {
+    margin: 0;
+    padding: 0;
+    height: 100%; /* Ensures the page fills the viewport */
+    box-sizing: border-box;
+}
+
+/* Ensure Footer Sticks to Bottom */
+body {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh; /* Ensures the content and footer fill the height */
+}
+
+main {
+    flex-grow: 1; /* Pushes the footer to the bottom when content is short */
+}
+
+/* Footer Styling */
 footer {
     text-align: center;
     background-color: #2c3e50;
     color: white;
-    padding: 20px 0;
-    position: fixed;
-    bottom: 0;
+    padding: 10px 0;
+    font-size: 14px;
     width: 100%;
+    margin-top: auto; /* Ensures it stays at the bottom */
 }
 
-/* Button Styling */
+
 button {
-    background-color: #3498db;
+    padding: 10px 20px;
+    font-size: 16px;
+    background-color: #007BFF;
     color: white;
-    font-size: 18px;
-    padding: 15px 30px;
     border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin: 20px 0;
+}
+
+button:hover {
+    background-color: #0056b3;
+}
+
+#mission {
+    font-size: 18px;
+    margin-top: 20px;
+    color: #333;
+}
+
+
+
+
+/* Style for the Services section */
+#services {
+    padding: 20px;
+    background-color: #f4f4f4;
+    border-radius: 5px;
+    margin-top: 20px;
+}
+
+#services h2 {
+    font-size: 24px;
+}
+
+#services ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+#services li {
+    margin: 10px 0;
+}
+
+/* Style for Success Stories section */
+#success-stories {
+    padding: 20px;
+    background-color: #e9ecef;
+    border-radius: 5px;
+    margin-top: 20px;
+}
+
+#success-stories h2 {
+    font-size: 24px;
+}
+
+#success-stories .story {
+    background-color: white;
+    padding: 15px;
+    margin: 10px 0;
+    border-radius: 5px;
+}
+
+#success-stories .story h3 {
+    margin-top: 0;
+}
+
+/* Style for Slideshow Section */
+#slideshow {
+    padding: 20px;
+    background-color: #f4f4f4;
+    border-radius: 5px;
+    margin-top: 20px;
+}
+
+.slideshow-container {
+    position: relative;
+    max-width: 100%;
+    margin: auto;
+}
+
+.slide {
+    display: none;
+}
+
+.slide img {
+    width: 100%;
+    border-radius: 5px;
+}
+
+.text {
+    position: absolute;
+    bottom: 15px;
+    left: 15px;
+    color: white;
+    font-size: 20px;
+    background-color: rgba(0, 0, 0, 0.5);
+    padding: 10px;
+}
+
+/* Show all slides in slideshow */
+@keyframes fade {
+    0% { opacity: 0 }
+    100% { opacity: 1 }
+}
+
+
+#call-to-action {
+    text-align: center;
+    padding: 50px 20px;
+    background-color: #f4f4f4;
+    border-top: 2px solid #ddd;
+}
+
+#call-to-action h2 {
+    font-size: 2rem;
+    margin-bottom: 15px;
+    color: #333;
+}
+
+#call-to-action p {
+    font-size: 1.2rem;
+    margin-bottom: 20px;
+    color: #555;
+}
+
+#cta-button {
+    background-color: #007bff;
+    color: white;
+    border: none;
+    padding: 15px 30px;
+    font-size: 1rem;
     border-radius: 5px;
     cursor: pointer;
     transition: background-color 0.3s ease;
 }
 
-button:hover {
-    background-color: #2980b9;
+#cta-button:hover {
+    background-color: #0056b3;
 }

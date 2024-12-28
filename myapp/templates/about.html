@@ -1,19 +1,26 @@
-{% load static %}
+
+{% extends "base.html" %}
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
+
+    {% load static %}
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>About Us</title>
+    <title>{% block title %}About Us{% endblock %}</title?    
+
     <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
 </head>
 <body>
+
+{% block content %}
     <h1>About Us</h1>
     <nav>
         <a href="/">Home</a> |
         <a href="/about/">About us</a> |
         <a href="/services/">Services</a> |
-        <a href="/contact/">Contact us</a>
+        <a href="/contact-us/">Contact us</a>
         <a href="/careers/">Careers</a>
         <a href="/help/">help</a>
         <a href="/learning/">Learning</a>
@@ -23,7 +30,7 @@
     <p>We are a team dedicated to providing excellent services. and come here</p>
     <p>We are a team dedicated to providing excellent services. and come here</p>
     <p>We are a team dedicated to providing excellent services. and come here</p>
-
+{% endblock %}
 
 </body>
 </html>
