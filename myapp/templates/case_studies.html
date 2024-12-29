@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+
+<title>{% block title %}</title>
+    
+{% endblock %}
+
+{% block content %}
+<h1>Case Studies</h1>
+
+<nav>
+    <a href="{% url 'home' %}">Home</a> |
+    <a href="{% url 'about' %}">About</a> |
+    <a href="{% url 'services' %}">Services</a> |
+    <a href="{% url 'contact-us' %}">Contact</a> |
+    <a href="{% url 'careers' %}">Careers</a> |
+    <a href="{% url 'help' %}">Help</a> |
+    <a href="{% url 'learning' %}">Learning</a>
+</nav>
+
+<p>Welcome to the Case Studies section. Learn from real-world applications and projects:</p>
+<ul>
+    <li><a href="#">Case Study 1: Scaling a Django App for Millions of Users</a></li>
+    <li><a href="#">Case Study 2: Migrating Legacy Systems to Modern Frameworks</a></li>
+    <li><a href="#">Case Study 3: Optimizing Frontend Performance</a></li>
+</ul>
+{% endblock %}

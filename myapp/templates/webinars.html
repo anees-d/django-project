@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+{% block content %}
+<h1>Webinars</h1>
+
+<nav>
+    <a href="{% url 'home' %}">Home</a> |
+    <a href="{% url 'about' %}">About</a> |
+    <a href="{% url 'services' %}">Services</a> |
+    <a href="{% url 'contact-us' %}">Contact</a> |
+    <a href="{% url 'careers' %}">Careers</a> |
+    <a href="{% url 'help' %}">Help</a> |
+    <a href="{% url 'learning' %}">Learning</a>
+</nav>
+
+<p>Welcome to the Webinars section. Watch informative sessions hosted by industry experts:</p>
+<ul>
+    <li><a href="#">Webinar 1: Future of AI in Web Development</a></li>
+    <li><a href="#">Webinar 2: Mastering Backend Testing</a></li>
+    <li><a href="#">Webinar 3: Performance Testing Strategies</a></li>
+</ul>
+{% endblock %}

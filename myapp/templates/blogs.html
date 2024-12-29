@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+
+
+<title>{% block content %} Blogs page </title>
+<h1>Blogs</h1>
+
+<nav>
+    <a href="/">Home</a> |
+    <a href="/about/">About</a> |
+    <a href="/services/">Services</a> |
+    <a href="/contact-us/">Contact</a> |
+    <a href="/careers/">Careers</a> |
+    <a href="/help/">help</a> |
+    <a href="/learning/">Learning</a>
+</nav>
+
+<p>Welcome to the Blogs section. Here you'll find insightful articles on various topics:</p>
+<ul>
+    <li><a href="#">Blog 1: Understanding the Basics of Django</a></li>
+    <li><a href="#">Blog 2: Tips for Writing Clean Code</a></li>
+    <li><a href="#">Blog 3: Latest Trends in Web Development</a></li>
+</ul>
+{% endblock %}

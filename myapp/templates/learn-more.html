@@ -1,0 +1,31 @@
+{% extends "base.html" %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% load static %}
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Learn More</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
+</head>
+<body>
+    {% block title %}Learn More{% endblock %}
+
+    {% block content %}
+    <header>
+        <h1>Learn More About Our Services</h1>
+    </header>
+    <main>
+        <p>Explore the details of our services, including case studies, benefits, and implementation strategies.</p>
+        <ul>
+            <li><strong>Web Development:</strong> Detailed case studies of successful web projects.</li>
+            <li><strong>Mobile App Development:</strong> Learn about our app development process and examples.</li>
+            <li><strong>Cybersecurity:</strong> Understand how we secure digital assets and our proven solutions.</li>
+        </ul>
+        <p>Contact us to know more or request a consultation.</p>
+        <a href="/contact-us/" class="btn-contact">Contact Us</a>
+    </main>
+    {% endblock %}
+</body>
+</html>

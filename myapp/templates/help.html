@@ -7,14 +7,14 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Help</title>
+
     <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
 </head>
 <body>
 
-    {% block title %}Help Page{% endblock %}
-
     {% block content %}
     <h1>Help Center</h1>
+
     <nav>
         <a href="/">Home</a> |
         <a href="/about/">About us</a> |
@@ -27,14 +27,74 @@
     </nav>
     <section>
         <h2>How can we assist you?</h2>
-        <p>If you have any questions or need support, please feel free to reach out.</p>
+        <p><b>If you have any questions or need support, please feel free to reach out.</b></p>
         <ul>
             <li>For technical support, email us at <strong>support@yourwebsite.com</strong>.</li>
             <li>For general inquiries, contact <strong>info@yourwebsite.com</strong>.</li>
-            <li>Phone: +123-456-7890 ...........03023377585</li>
+            <li>Phone: +123-456-7890</li>
         </ul>
     </section>
-</body>
+    
+    <!-- New FAQ Section -->
+    <section class="faq-section">
+        <h2>Frequently Asked Questions</h2>
+        <div class="faq">
+            <h3>What services do you offer?</h3>
+            <p class="faq-answer">We provide a wide range of services, including web development, app development, and digital marketing. Visit our <a href="/services/">Services</a> page for more details.</p>
+        </div>
+        <div class="faq">
+            <h3>How do I handle billing-related inquiries?</h3>
+            <p class="faq-answer">For billing inquiries, please contact our billing team at <strong>billing@yourwebsite.com</strong>. You can also call us at +123-456-7890.</p>
+        </div>
+        <div class="faq">
+            <h3>What should I do if I need technical support?</h3>
+            <p class="faq-answer">For technical support, please email <strong>support@yourwebsite.com</strong>. Our team is available 24/7 to assist you.</p>
+        </div>
+    </section>
+    
 
-    {% endblock %}
+    <!-- New Support Ticket or Chatbot Section -->
+    <section class="support-section">
+        <h2>Need More Help?</h2>
+        <p>Submit a support ticket or chat with us in real time for quick assistance.</p>
+        <button id="support-ticket-btn">Submit a Support Ticket</button>
+        <button id="chatbot-btn">Chat Now</button>
+
+        <!-- Chatbot Placeholder -->
+        <div id="chatbot-container" style="display: none;">
+            <iframe src="https://yourchatbotlink.com" width="100%" height="500" title="Chatbot"></iframe>
+        </div>
+    </section>
+
+    <script>
+        // Show Chatbot on Button Click
+        document.getElementById('chatbot-btn').addEventListener('click', function () {
+            document.getElementById('chatbot-container').style.display = 'block';
+        });
+    </script>
+
+    <!-- New Downloadable Guides Section -->
+    <section class="download-section">
+        <h2>Downloadable Guides</h2>
+        <p><strong>Access our helpful guides and documentation to learn more about our services and processes.</strong></p>
+        <ul class="download-list">
+            <li>
+                <a href="{% static 'docs/user_guide.pdf' %}" download>
+                    <i class="icon-doc"></i> User Guide
+                </a>
+            </li>
+            <li>
+                <a href="{% static 'docs/setup_guide.pdf' %}" download>
+                    <i class="icon-doc"></i> Setup Guide
+                </a>
+            </li>
+            <li>
+                <a href="{% static 'docs/faq.pdf' %}" download>
+                    <i class="icon-doc"></i> Frequently Asked Questions
+                </a>
+            </li>
+        </ul>
+    </section>
+{% endblock %}
+    
 </html>

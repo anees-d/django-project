@@ -1,36 +1,124 @@
-
 {% extends "base.html" %}
 
 <!DOCTYPE html>
 <html lang="en">
 <head>
-
     {% load static %}
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>{% block title %}About Us{% endblock %}</title?    
-
+    <title>{% block title %}About Us{% endblock %}</title>
     <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
 </head>
 <body>
+    {% block content %}
 
-{% block content %}
+<header>
     <h1>About Us</h1>
     <nav>
         <a href="/">Home</a> |
         <a href="/about/">About us</a> |
         <a href="/services/">Services</a> |
-        <a href="/contact-us/">Contact us</a>
-        <a href="/careers/">Careers</a>
-        <a href="/help/">help</a>
+        <a href="/contact-us/">Contact us</a> |
+        <a href="/careers/">Careers</a> |
+        <a href="/help/">Help</a> |
         <a href="/learning/">Learning</a>
-
-
     </nav>
-    <p>We are a team dedicated to providing excellent services. and come here</p>
-    <p>We are a team dedicated to providing excellent services. and come here</p>
-    <p>We are a team dedicated to providing excellent services. and come here</p>
-{% endblock %}
+</header>
+
+    <section id="about-us">
+        <div class="container">
+            <h1>About Us</h1>
+            <p>
+                Welcome to <strong>TechSol</strong>, where innovation meets excellence! Since our founding in 2010, we have been dedicated to providing top-notch IT solutions to businesses worldwide. From humble beginnings as a small startup, we have grown into a globally recognized tech company, trusted by thousands of clients for our expertise, commitment, and cutting-edge solutions.
+            </p>
+            
+            <h2>Our History</h2>
+            <p>
+                Founded by a group of passionate tech enthusiasts, TechSol was established with the vision of transforming the way businesses interact with technology. Over the years, we have achieved numerous milestones, including launching industry-leading products and partnering with renowned global organizations. Our history is a testament to our adaptability, resilience, and drive for continuous improvement.
+            </p>
+
+            <h2>Our Values</h2>
+            <ul>
+                <li><strong>Integrity:</strong> We are committed to honesty and transparency in everything we do.</li>
+                <li><strong>Innovation:</strong> Creativity and innovation drive our solutions and services.</li>
+                <li><strong>Excellence:</strong> Delivering high-quality results is at the core of our mission.</li>
+                <li><strong>Customer-Centric Approach:</strong> We prioritize the success and satisfaction of our clients.</li>
+                <li><strong>Teamwork:</strong> Collaboration is key to our success as a company.</li>
+            </ul>
+
+            <h2>Our Mission</h2>
+            <p>
+                Our mission is to empower businesses and individuals with innovative, reliable, and scalable IT solutions. 
+                We are dedicated to driving digital transformation through cutting-edge technology, exceptional service, and a commitment to excellence.
+            </p>
+
+            <h2>Our Vision</h2>
+            <p>
+                To be a global leader in IT solutions, recognized for our commitment to innovation, excellence, and customer success.
+            </p>
+
+            <!-- Team Section -->
+            <h2>Meet the Team</h2>
+            <section class="team">
+                <div class="team-member">
+                    <img src="{% static 'images/team-member1.jpg' %}" alt="John Doe">
+                    <h3>John Doe</h3>
+                    <p>CEO & Founder</p>
+                    <p>John is a visionary leader with over 15 years of experience in IT solutions. He founded TechSol with a mission to revolutionize the tech industry.</p>
+                </div>
+                <div class="team-member">
+                    <img src="{% static 'images/team-member2.jpg' %}" alt="Jane Smith">
+                    <h3>Jane Smith</h3>
+                    <p>Chief Technology Officer</p>
+                    <p>Jane is the technical powerhouse behind TechSol, leading our development team with her expertise in cutting-edge technologies.</p>
+                </div>
+                <div class="team-member">
+                    <img src="{% static 'images/team-member3.jpg' %}" alt="Michael Brown">
+                    <h3>Michael Brown</h3>
+                    <p>Head of Marketing</p>
+                    <p>With a creative flair and strategic vision, Michael ensures our solutions reach businesses that need them most.</p>
+                </div>
+            </section>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+<section id="testimonials">
+    <div class="container">
+        <h2>What Our Clients Say</h2>
+        <div class="testimonials">
+            <div class="testimonial">
+                <p>"TechSol transformed our business operations with their cutting-edge solutions. Their team is simply outstanding!"</p>
+                <h4>– Sarah Johnson, CEO of Innovatech</h4>
+            </div>
+            <div class="testimonial">
+                <p>"The professionalism and dedication TechSol showed in delivering our project were unmatched. Highly recommended!"</p>
+                <h4>– Mark Davis, CTO of GreenFuture</h4>
+            </div>
+            <div class="testimonial">
+                <p>"TechSol's solutions have been instrumental in our growth. Their expertise is truly top-notch!"</p>
+                <h4>– Emily White, Founder of StartSmart</h4>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Client Logos Section -->
+<section id="client-logos">
+    <div class="container">
+        <h2>Our Valued Clients</h2>
+        <div class="logos">
+            <img src="{% static 'images/client1.png' %}" alt="Client 1">
+            <img src="{% static 'images/client2.png' %}" alt="Client 2">
+            <img src="{% static 'images/client3.png' %}" alt="Client 3">
+            <img src="{% static 'images/client4.png' %}" alt="Client 4">
+        </div>
+    </div>
+</section>
+
+    {% endblock %}
+
+<script src="{% static 'main.js' %}"></script>
 
 </body>
 </html>

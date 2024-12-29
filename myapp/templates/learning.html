@@ -12,7 +12,7 @@
 </head>
 <body>
 
-    {% block title %}Careers Page{% endblock %}
+    {% block title %}Learning Page{% endblock %}
 
     {% block content %}
     <h1>Welcome to the Learning Page</h1>
@@ -32,7 +32,22 @@
         <li><a href="/learning/html-css/">HTML & CSS Tutorials</a></li>
         <li><a href="/learning/js/">JavaScript Tutorials</a></li>
     </ul>
+<script src="{% static 'js/script.js' %}"></script>
+
 </body>
+
+<!-- New Resource Hub Section -->
+<section id="resource-hub">
+    <h2>Resource Hub</h2>
+    <p>Explore our extensive resource hub to enhance your learning experience:</p>
+    <ul>
+        <li><a href="{% url 'blogs' %}">Blogs</a> - Read insightful articles and updates.</li>
+        <li><a href="{% url 'tutorials' %}">Tutorials</a> - Step-by-step guides for beginners and professionals.</li>
+        <li><a href="{% url 'webinars' %}">Webinars</a> - Watch informative sessions by experts.</li>
+        <li><a href="{% url 'case-studies' %}">Case Studies</a> - Learn from real-world applications.</li>
+    </ul>
+    
+</section>
 
     {% endblock %}
 </html>

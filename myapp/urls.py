@@ -10,14 +10,22 @@ urlpatterns = [
     path('', views.home, name='home'),           # Home page
     path('about/', views.about, name='about'),   # About page
     path('services/', views.services, name='services'),  # Services page
-    path('contact-us/', views.contact, name='contact'),      # Contact page
+    path('contact-us/', views.contact, name='contact-us'),      # Contact page
 
     path('careers/', views.careers, name='careers'),      # Careers page
     path('help/', views.help, name='help'),      # Careers page
+    path('submit-ticket/', views.submit_ticket, name='submit_ticket'),
     path('learning/', views.learning, name='learning'),      # Learning page
     path('careers/frontend-developer/', views.frontend_developer, name='frontend_developer'), # front end
     path('careers/backend-developer/', views.backend_developer, name='backend_developer'), # back end
     path('careers/ui-ux-designer/', views.ui_ux_designer, name='ui_ux_designer'), # Ui design
     path('careers/project-manager/', views.project_manager, name='project_manager'), # project manager
+    path('request-quote/', views.request_quote, name='request_quote'),
+    path('learn-more/', views.learn_more, name='learn_more'),
+    path('blogs/', views.blogs, name='blogs'),
+    path('tutorials/', views.tutorials, name='tutorials'),
+    path('webinars/', views.webinars, name='webinars'),
+    path('case-studies/', views.case_studies, name='case-studies'),
+    
 ] + static(settings.STATIC_URL, document_root=settings.STATICFILES_DIRS[0])
 

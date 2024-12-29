@@ -1,44 +1,93 @@
-{% extends "base.html"%}
+{% extends "base.html" %}
 
 <!DOCTYPE html>
 <html lang="en">
 <head>
-
     {% load static %}
-
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Careers</title>
+    <title>Our Services</title>
     <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
 </head>
 <body>
 
-
-{% block title %}Careers Page{% endblock %}
+{% block title %}Careers at Our Company{% endblock %}
 
 {% block content %}
-    <h1>Careers</h1>
+
+<header>
+    <h1>Our Careers</h1>
     <nav>
         <a href="/">Home</a> |
-        <a href="/about/">About us</a> |
+        <a href="/about/">About Us</a> |
         <a href="/services/">Services</a> |
-        <a href="/contact-us/">Contact us</a> |
-        <a href="/careers/">Careers</a>
-        <a href="/help/">help</a>
+        <a href="/contact-us/">Contact Us</a> |
+        <a href="/careers/">Careers</a> |
+        <a href="/help/">Help</a> |
         <a href="/learning/">Learning</a>
-
-
     </nav>
-    <p>Welcome to our Careers page! Join our team and help shape the future of technology. Below are our current openings:</p>
-    <ul>
-        <li><a href="/careers/frontend-developer/">Frontend Developer</a></li>
-        <li><a href="/careers/backend-developer/">Backend Developer</a></li>
-        <li><a href="/careers/ui-ux-designer/">UI/UX Designer</a></li>
-        <li><a href="/careers/project-manager/">Project Manager</a></li>
-        
-    </ul>
-    <p>If you're interested in any of these roles, please send your resume to <a href="mailto:careers@example.com">careers@example.com</a>.</p>
-</body>
+</header>
+
+    <section class="careers-header">
+        <h1>Join Our Team</h1>
+        <p>We're always looking for passionate individuals to help shape the future of technology. Explore our current openings below and take the next step in your career!</p>
+    </section>
+
+    <section class="job-listings">
+        <h2>Current Job Openings</h2>
+        <div class="job">
+            <h3>Frontend Developer</h3>
+            <p>Build intuitive user interfaces using the latest web technologies.</p>
+            <a href="/careers/frontend-developer/" class="apply-btn">View Details & Apply</a>
+        </div>
+        <div class="job">
+            <h3>Backend Developer</h3>
+            <p>Design and maintain server-side applications for seamless performance.</p>
+            <a href="/careers/backend-developer/" class="apply-btn">View Details & Apply</a>
+        </div>
+        <div class="job">
+            <h3>UI/UX Designer</h3>
+            <p>Create engaging and user-friendly designs to enhance customer experiences.</p>
+            <a href="/careers/ui-ux-designer/" class="apply-btn">View Details & Apply</a>
+        </div>
+        <div class="job">
+            <h3>Project Manager</h3>
+            <p>Lead projects to success by managing timelines, resources, and teams.</p>
+            <a href="/careers/project-manager/" class="apply-btn">View Details & Apply</a>
+        </div>
+    </section>
+
+    <section class="careers-footer">
+        <p>Interested in joining us? Send your resume to <a href="mailto:careers@example.com">careers@example.com</a>. We look forward to hearing from you!</p>
+    </section>
+
+
+    <section class="work-culture">
+        <h2>Our Work Culture</h2>
+        <p>At our company, we prioritize collaboration, innovation, and personal growth. We believe in creating an inclusive environment where everyone feels valued and empowered to contribute their best.</p>
+        <ul>
+            <li>Flexible work hours and remote work opportunities</li>
+            <li>Open-door policy to foster communication</li>
+            <li>Regular team-building activities and events</li>
+            <li>Focus on continuous learning and upskilling</li>
+        </ul>
+    
+        <h2>Employee Benefits</h2>
+        <p>We offer a competitive benefits package designed to support your personal and professional well-being.</p>
+        <ul>
+            <li>Comprehensive health, dental, and vision insurance</li>
+            <li>Generous paid time off and holidays</li>
+            <li>401(k) retirement plans with company matching</li>
+            <li>Professional development opportunities</li>
+            <li>Access to wellness programs and resources</li>
+        </ul>
+    </section>
+
+    <!-- New Section: General Applications -->
+<section class="general-applications">
+    <h2>General Applications</h2>
+    <p>Don’t see a role that fits your skills? We’re always on the lookout for talented individuals. If you’d like to join our team in the future, we encourage you to send us a general application.</p>
+    <p>Email your resume and a brief introduction to <a href="mailto:opportunities@example.com">opportunities@example.com</a>. We’ll keep your information on file for upcoming opportunities!</p>
+</section>
 
 {% endblock %}
-</html>

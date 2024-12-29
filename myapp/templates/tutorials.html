@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+{% block content %}
+<h1>Tutorials</h1>
+
+<nav>
+    <a href="{% url 'home' %}">Home</a> |
+    <a href="{% url 'about' %}">About</a> |
+    <a href="{% url 'services' %}">Services</a> |
+    <a href="{% url 'contact-us' %}">Contact</a> |
+    <a href="{% url 'careers' %}">Careers</a> |
+    <a href="{% url 'help' %}">Help</a> |
+    <a href="{% url 'learning' %}">Learning</a>
+</nav>
+
+<p>Welcome to the Tutorials section. Explore step-by-step guides to enhance your skills:</p>
+<ul>
+    <li><a href="#">Python Tutorial: Getting Started</a></li>
+    <li><a href="#">Django Tutorial: Building Your First Project</a></li>
+    <li><a href="#">HTML & CSS Tutorial: Basics and Beyond</a></li>
+</ul>
+{% endblock %}
