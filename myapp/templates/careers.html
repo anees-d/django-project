@@ -22,40 +22,27 @@
         <a href="/about/">About Us</a> |
         <a href="/services/">Services</a> |
         <a href="/contact-us/">Contact Us</a> |
-        <a href="/careers/">Careers</a> |
+        <li><a href="{% url 'careers' %}" class="{% if request.resolver_match.url_name == 'careers' %}active{% endif %}">Careers</a></li>
         <a href="/help/">Help</a> |
         <a href="/learning/">Learning</a>
     </nav>
 </header>
 
-    <section class="careers-header">
-        <h1>Join Our Team</h1>
-        <p>We're always looking for passionate individuals to help shape the future of technology. Explore our current openings below and take the next step in your career!</p>
-    </section>
+<section class="job-listings">
+    <h2>Current Job Openings</h2>
+    {% if job_listings %}
+        {% for job in job_listings %}
+            <div class="job">
+                <h3>{{ job.title }}</h3>
+                <p>{{ job.description }}</p>
+                <a href="{{ job.details_url }}" class="apply-btn">View Details & Apply</a>
+            </div>
+        {% endfor %}
+    {% else %}
+        <p>No current job openings. Please check back later!</p>
+    {% endif %}
+</section>
 
-    <section class="job-listings">
-        <h2>Current Job Openings</h2>
-        <div class="job">
-            <h3>Frontend Developer</h3>
-            <p>Build intuitive user interfaces using the latest web technologies.</p>
-            <a href="/careers/frontend-developer/" class="apply-btn">View Details & Apply</a>
-        </div>
-        <div class="job">
-            <h3>Backend Developer</h3>
-            <p>Design and maintain server-side applications for seamless performance.</p>
-            <a href="/careers/backend-developer/" class="apply-btn">View Details & Apply</a>
-        </div>
-        <div class="job">
-            <h3>UI/UX Designer</h3>
-            <p>Create engaging and user-friendly designs to enhance customer experiences.</p>
-            <a href="/careers/ui-ux-designer/" class="apply-btn">View Details & Apply</a>
-        </div>
-        <div class="job">
-            <h3>Project Manager</h3>
-            <p>Lead projects to success by managing timelines, resources, and teams.</p>
-            <a href="/careers/project-manager/" class="apply-btn">View Details & Apply</a>
-        </div>
-    </section>
 
     <section class="careers-footer">
         <p>Interested in joining us? Send your resume to <a href="mailto:careers@example.com">careers@example.com</a>. We look forward to hearing from you!</p>

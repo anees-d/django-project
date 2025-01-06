@@ -1,5 +1,4 @@
 {% extends "base.html" %}
-
 {% load static %}
 
 <!DOCTYPE html>
@@ -11,9 +10,7 @@
     <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
 </head>
 <body>
-
     {% block title %}Learning Page{% endblock %}
-
     {% block content %}
     <h1>Welcome to the Learning Page</h1>
     <nav>
@@ -22,32 +19,29 @@
         <a href="/services/">Services</a> |
         <a href="/contact-us/">Contact</a> |
         <a href="/careers/">Careers</a> |
-        <a href="/help/">help</a> |
-        <a href="/learning/">Learning</a>
+        <a href="/help/">Help</a> |
+        <a href="{% url 'learning_page' %}" class="{% if request.resolver_match.url_name == 'learning_page' %}active{% endif %}">Learning</a>
     </nav>
-    <p>This is a simple learning page where you can explore various resources and tutorials. you can learn many points and make the document</p>
-    <ul>
-        <li><a href="/learning/python/">Python Tutorials</a></li>
-        <li><a href="/learning/django/">Django Tutorials</a></li>
-        <li><a href="/learning/html-css/">HTML & CSS Tutorials</a></li>
-        <li><a href="/learning/js/">JavaScript Tutorials</a></li>
-    </ul>
-<script src="{% static 'js/script.js' %}"></script>
-
-</body>
-
-<!-- New Resource Hub Section -->
-<section id="resource-hub">
-    <h2>Resource Hub</h2>
-    <p>Explore our extensive resource hub to enhance your learning experience:</p>
-    <ul>
-        <li><a href="{% url 'blogs' %}">Blogs</a> - Read insightful articles and updates.</li>
-        <li><a href="{% url 'tutorials' %}">Tutorials</a> - Step-by-step guides for beginners and professionals.</li>
-        <li><a href="{% url 'webinars' %}">Webinars</a> - Watch informative sessions by experts.</li>
-        <li><a href="{% url 'case-studies' %}">Case Studies</a> - Learn from real-world applications.</li>
-    </ul>
+    <p>This is a simple learning page where you can explore various resources and tutorials.</p>
     
-</section>
+    <h2>Available Resources</h2>
+    <ul>
+        {% for resource in resources %}
+            <li>
+                <a href="{{ resource.url }}" target="_blank" rel="noopener noreferrer">{{ resource.title }}</a> - {{ resource.description }}
+                <small>Category: {{ resource.category }}</small>
+            </li>
+        {% empty %}
+            <p>No resources available. Check back later!</p>
+        {% endfor %}
+    </ul>
 
+    <!-- External Links -->
+    <a href="{% url 'learning_page' %}" target="_blank" rel="noopener noreferrer">Learning</a>
+    <a href="https://www.youtube.com/watch?v=xBVIdTIKXpk" target="_blank" rel="noopener noreferrer">Watch YouTube Video</a>
+    <a href="{{ video_url }}" target="_blank" rel="noopener noreferrer">Watch Video</a>
+
+    <script src="{% static 'js/script.js' %}"></script>
     {% endblock %}
+</body>
 </html>

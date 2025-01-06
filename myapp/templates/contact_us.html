@@ -1,0 +1,50 @@
+{% extends "base.html" %}
+{% block title %}Contact Us{% endblock %}
+
+{% block content %}
+<header>
+    <h1>Contact Us</h1>
+    <nav>
+        <a href="/">Home</a> |
+        <a href="/about/">About Us</a> |
+        <a href="/services/">Services</a> |
+        <li><a href="{% url 'contact-us' %}" class="{% if request.resolver_match.url_name == 'contact-us' %}active{% endif %}">Contact Us</a></li>
+        <a href="/careers/">Careers</a> |
+        <a href="/help/">Help</a> |
+        <a href="/learning/">Learning</a>
+    </nav>
+</header>
+
+<div class="form-container">
+    {% if success %}
+        <p class="success">Thank you for contacting us! We will get back to you soon.</p>
+    {% elif success is not none %}
+        <p class="error">There was an error in your submission. Please correct the form and try again.</p>
+    {% endif %}
+
+
+    {% if messages %}
+        <ul>
+            {% for message in messages %}
+            <li>{{ message }}</li>
+            {% endfor %}
+        </ul>
+    {% endif %}
+
+
+    <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        {% for field in form %}
+            {% if field.errors %}
+                <ul>
+                    {% for error in field.errors %}
+                        <li>{{ error }}</li>
+                    {% endfor %}
+                </ul>
+            {% endif %}
+        {% endfor %}
+        <button type="submit">Submit</button>
+    </form>
+    
+{% endblock %}

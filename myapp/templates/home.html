@@ -7,9 +7,9 @@
 <header>
     <h1>Welcome to the Home Page</h1>
     <nav>
-        <a href="/">Home</a> |
-        <a href="/about/">About us</a> |
-        <a href="/services/">Services</a> |
+        <li><a href="{% url 'home' %}" class="{% if request.resolver_match.url_name == 'home' %}active{% endif %}">Home</a></li>
+        <a href="/about/">About Us</a> |
+        <a href="services">Services</a>
         <a href="/contact-us/">Contact us</a> |
         <a href="/careers/">Careers</a> |
         <a href="/help/">Help</a> |
@@ -19,59 +19,71 @@
 
     <button onclick="toggleMission()">Show Mission Statement</button>
     <p id="mission" style="display: none;">
-        At <a href="/TechSol/">TechSol</a>, our mission is to empower businesses and individuals with innovative, reliable, and scalable IT solutions. 
+        At <a href="{% url 'about' %}">TechSol</a>, our mission is to empower businesses and individuals with innovative, reliable, and scalable IT solutions. 
         We are dedicated to driving digital transformation through cutting-edge technology, exceptional service, and a commitment to excellence.
     </p>
 
+    <p>Contact our team on clciking the contact us page -> <a href="/contact-us/">Contact us</a> </p>
+
+
     <!-- Services Overview Section -->
-    <section id="services">
-        <h2>Our Services</h2>
-        <ul>
-            <li>Custom Software Development</li>
-            <li>Cloud Solutions</li>
-            <li>IT Consulting</li>
-            <li>Mobile App Development</li>
-            <li>Cybersecurity Solutions</li>
-        </ul>
-    </section>
+    <div id="about-services">
+        <h2>About Services</h2>
+        {% if about_services %}
+            <ul>
+                {% for service in about_services %}
+                    <li>
+                        <h3>{{ service.title }}</h3>
+                        <p>{{ service.description }}</p>
+                    </li>
+                {% endfor %}
+            </ul>
+        {% else %}
+            <p>No services available at the moment.</p>
+        {% endif %}
+    </div>
 
     <!-- Success Stories Section -->
     <section id="success-stories">
         <h2>Success Stories</h2>
-        <div class="story">
-            <h3>Client A</h3>
-            <p>With our custom software solutions, Client A increased their operational efficiency by 40% and improved customer satisfaction.</p>
-        </div>
-        <div class="story">
-            <h3>Client B</h3>
-            <p>Our cloud solutions helped Client B scale their business rapidly while maintaining a high level of security and reliability.</p>
-        </div>
+        {% for story in success_stories %}
+            <div class="story">
+                <h3>{{ story.client_name }}</h3>
+                <p>{{ story.description }}</p>
+            </div>
+        {% endfor %}
     </section>
+
 
     <!-- Slideshow Section -->
 
     {% load static %}
-    <section id="slideshow">
-        <h2>Our Achievements</h2>
-        <div class="slideshow-container">
+   
+<section id="slideshow">
+    <h2>Our Achievements</h2>
+    <div class="slideshow-container">
+        {% for achievement in achievements %}
             <div class="slide fade">
-                <img src="{% static 'images/achievement1.jpg' %}" alt="Achievement 1">
-                <div class="text">Awarded Best IT Solution Provider 2024</div>
+                <img src="{{ achievement.image_url }}" alt="{{ achievement.title }}">
+                <div class="text">{{ achievement.description }}</div>
             </div>
-            <div class="slide fade">
-                <img src="{% static 'images/achievement2.jpg' %}" alt="Achievement 2">
-                <div class="text">500+ Successful Projects Delivered</div>
-            </div>
-        </div>
-    </section>
+        {% empty %}
+            <p> No achievement available at the moment. </p>
+        {% endfor %}
+    </div>
+</section>
 
     <!-- Call-to-Action Section -->
+    
     <section id="call-to-action">
-        <h2>Ready to Transform Your Business?</h2>
-        <p>Contact us today to learn how we can help you achieve your goals with our innovative IT solutions.</p>
-        <button id="cta-button">Get Started</button>
+        <h2>{{ call_to_action.title }}</h2>
+        <p>{{ call_to_action.description }}</p>
+        <a href="{{ call_to_action.button_link }}">
+            <button id="cta-button">{{ call_to_action.button_text }}</button>
+        </a>
     </section>
 
-    <!-- Include JS at the Bottom -->
-    <script src="{% static 'main.js' %}"></script>
+<!-- Include JS at the Bottom -->
+<script src="{% static 'main.js' %}"></script>
+
 {% endblock %}

@@ -42,10 +42,10 @@ nav a:hover {
     color: #ecf0f1;
 }
 
-/* Paragraph Styling */
+/* Paragraph Styling in home */
 p {
-    text-align: center;
-    color: #7f8c8d;
+    text-align: justify;
+    color: red;
     font-size: 20px;
     line-height: 1.6;
     margin: 20px auto;
@@ -154,7 +154,7 @@ footer {
 button {
     padding: 10px 20px;
     font-size: 16px;
-    background-color: #007BFF;
+    background-color: black;
     color: white;
     border: none;
     border-radius: 5px;
@@ -178,24 +178,59 @@ button:hover {
 /* Style for the Services section */
 #services {
     padding: 20px;
-    background-color: #f4f4f4;
-    border-radius: 5px;
+    background-color: #5a3d2b; /* Softer brown for a modern feel */
+    border-radius: 10px; /* Increased rounding for smoother edges */
     margin-top: 20px;
+    color: blue; /* Contrasting text color for readability */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Subtle shadow for depth */
+    transition: transform 0.3s ease, background-color 0.3s ease;
+}
+
+#services:hover {
+    background-color: #4c3225; /* Slightly darker on hover */
+    transform: scale(1.02); /* Subtle scale effect on hover */
 }
 
 #services h2 {
-    font-size: 24px;
-    color: blue;
+    font-size: 28px; /* Slightly larger for emphasis */
+    color: #ffcc00; /* Bright yellow for standout titles */
+    margin-bottom: 10px;
+    text-align: center; /* Center align for a balanced look */
+    font-family: 'Arial', sans-serif; /* Clean and modern font */
+}
+
+#services p {
+
+    display: block; /* Hide description below the title */
+    color: #002a80;
+    text-align: center; 
+
 }
 
 #services ul {
     list-style-type: none;
     padding: 0;
+    margin: 0;
 }
 
 #services li {
+    background-color: #218838; /* Vibrant green for list items */
+    color: white;
     margin: 10px 0;
+    padding: 10px 15px;
+    border-radius: 5px;
+    font-size: 16px;
+    font-family: 'Verdana', sans-serif; /* Modern and readable font */
+    transition: background-color 0.3s ease, transform 0.3s ease;
 }
+
+#services li:hover {
+    background-color: #1e7a33; /* Slightly darker green on hover */
+    transform: translateY(-3px); /* Slight lift on hover */
+    cursor: pointer;
+}
+
+
 
 /* Style for Success Stories section */
 #success-stories {
@@ -219,6 +254,7 @@ button:hover {
 
 #success-stories .story h3 {
     margin-top: 0;
+    color: red;
 }
 
 /* Style for Slideshow Section */
@@ -236,7 +272,7 @@ button:hover {
 }
 
 .slide {
-    display: none;
+    display: block;
 }
 
 .slide img {
@@ -263,37 +299,50 @@ button:hover {
 
 #call-to-action {
     text-align: center;
-    padding: 50px 20px;
-    background-color: #f4f4f4;
-    border-top: 2px solid #ddd;
+    background: linear-gradient(to right, #4facfe, #00f2fe); /* Smooth gradient */
+    color: white;
+    padding: 40px 20px;
+    border-radius: 10px; /* Rounded corners */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2); /* Subtle shadow */
+    margin: 20px auto;
+    max-width: 800px; /* Center and limit width */
 }
 
 #call-to-action h2 {
-    font-size: 2rem;
-    margin-bottom: 15px;
-    color: #333;
+    font-size: 2.5rem;
+    margin-bottom: 20px;
+    font-weight: bold;
+    color: white;
+    text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.2); /* Text shadow for depth */
 }
 
 #call-to-action p {
-    font-size: 1.2rem;
-    margin-bottom: 20px;
-    color: #555;
+    font-size: 1.3rem;
+    margin-bottom: 30px;
+    line-height: 1.6;
+    color: #f0f0f0;
+    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.1); /* Subtle text shadow */
 }
 
 #cta-button {
-    background-color: #007bff;
+    background: linear-gradient(to right, #007bff, #0056b3); /* Gradient button */
     color: white;
     border: none;
     padding: 15px 30px;
-    font-size: 1rem;
-    border-radius: 5px;
     cursor: pointer;
-    transition: background-color 0.3s ease;
+    font-size: 1rem;
+    font-weight: bold;
+    border-radius: 50px; /* Fully rounded button */
+    transition: all 0.3s ease; /* Smooth hover transition */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Button shadow */
 }
 
 #cta-button:hover {
-    background-color: #0056b3;
+    background: linear-gradient(to right, #0056b3, #003580); /* Darker gradient on hover */
+    transform: translateY(-2px); /* Slight lift effect */
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3); /* Enhanced shadow */
 }
+
 
 
 
@@ -459,25 +508,39 @@ body {
     color: #333;
 }
 
+/* General Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Header Styling */
+/* Header Styling */
+
 header {
-    background-color: blue;
+    background-color: grey;
     color: white;
     padding: 20px;
     text-align: center;
 }
 
 
-header nav a {
-    color: #fff;
-    text-decoration: none;
-    margin: 0 10px;
+header nav a.active {
+    color: #007bff; /* Highlighted text color */
+    font-weight: bold; /* Make the text bold */
+    border-bottom: 2px solid #007bff; /* Add an underline */
+    text-decoration: none; /* Remove default underline */
 }
 
 
 
 main {
     padding: 20px;
+    color: #002a80;
+    background-color: blue;
 }
+
 
 #services {
     display: grid;
@@ -661,6 +724,7 @@ nav {
     color: #fff;
     padding: 10px;
     text-align: center;
+    font-size: large;
 }
 
 nav a {
@@ -688,6 +752,7 @@ form {
     max-width: 600px;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
 }
+
 
 form div {
     margin-bottom: 15px;
@@ -1000,7 +1065,6 @@ h1, h2, h3 {
     border-bottom: 5px solid #ff6a3d; /* Matches the gradient tones */
     box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1); /* Adds depth */
 }
-
 
 .careers-header h1 {
     font-size: 2.8em;
@@ -1321,8 +1385,8 @@ h1, h2, h3 {
     vertical-align: middle;
 }
 
-
 /* Resource Hub Styling */
+
 #resource-hub {
     margin-top: 20px;
     padding: 20px;
@@ -1363,3 +1427,189 @@ h1, h2, h3 {
     color: #0056b3;
     text-decoration: underline;
 }
+
+
+
+#team .team-member, #testimonials .testimonial, #client-logos .logos img {
+    margin: 20px;
+    text-align: center;
+}
+
+#team .team-member img {
+    border-radius: 50%;
+    width: 150px;
+    height: 150px;
+}
+
+#client-logos .logos img {
+    max-width: 120px;
+    max-height: 80px;
+}
+
+/*-------- Contact form---------------*/
+
+body {
+    font-family: Arial, sans-serif;
+}
+
+header h1 {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+form {
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background-color: #f9f9f9;
+}
+
+form div {
+    margin-bottom: 15px;
+}
+
+form label {
+    display: block;
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+
+form input, form textarea {
+    width: 100%;
+    padding: 10px;
+    font-size: 1rem;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-sizing: border-box;
+}
+
+form button {
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+form button:hover {
+    background-color: #0056b3;
+}
+
+.form-container {
+    max-width: 500px;
+    margin: 0 auto;
+    padding: 20px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    background-color: #f9f9f9;
+}
+.success {
+    color: green;
+}
+.error {
+    color: red;
+}
+
+
+/* ----------FAQ help-------*/
+
+.faq-section {
+    margin-top: 20px;
+}
+
+.faq h3 {
+    font-size: 18px;
+    font-weight: bold;
+}
+
+.faq-answer {
+    margin-left: 20px;
+}
+
+.download-list {
+    list-style-type: none;
+}
+
+.download-list li {
+    margin: 5px 0;
+}
+
+button {
+    margin: 5px;
+}
+
+
+/*-------------ticket---------*/
+
+#ticket-modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0,0,0,0.5);
+    z-index: 1000;
+}
+
+.modal-content {
+    background-color: white;
+    padding: 20px;
+    margin: 100px auto;
+    width: 50%;
+    position: relative;
+}
+
+#close-modal {
+    position: absolute;
+    top: 10px;
+    right: 20px;
+    font-size: 30px;
+    cursor: pointer;
+}
+
+
+/*-------------learning----------*/
+
+body {
+    font-family: Arial, sans-serif;
+    line-height: 1.6;
+    background-color: #f4f4f4;
+    margin: 0;
+    padding: 0;
+}
+
+h1 {
+    color: #333;
+}
+
+nav {
+    margin-bottom: 20px;
+}
+
+nav a {
+    margin-right: 10px;
+    text-decoration: none;
+    color: #007BFF;
+}
+
+nav a.active {
+    font-weight: bold;
+}
+
+ul {
+    list-style: none;
+    padding: 0;
+}
+
+ul li {
+    margin: 10px 0;
+    background: #fff;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+}
+

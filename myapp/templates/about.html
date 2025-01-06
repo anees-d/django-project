@@ -16,7 +16,7 @@
     <h1>About Us</h1>
     <nav>
         <a href="/">Home</a> |
-        <a href="/about/">About us</a> |
+        <li><a href="{% url 'about' %}" class="{% if request.resolver_match.url_name == 'about' %}active{% endif %}">About</a></li>
         <a href="/services/">Services</a> |
         <a href="/contact-us/">Contact us</a> |
         <a href="/careers/">Careers</a> |
@@ -58,64 +58,47 @@
             </p>
 
             <!-- Team Section -->
-            <h2>Meet the Team</h2>
-            <section class="team">
-                <div class="team-member">
-                    <img src="{% static 'images/team-member1.jpg' %}" alt="John Doe">
-                    <h3>John Doe</h3>
-                    <p>CEO & Founder</p>
-                    <p>John is a visionary leader with over 15 years of experience in IT solutions. He founded TechSol with a mission to revolutionize the tech industry.</p>
-                </div>
-                <div class="team-member">
-                    <img src="{% static 'images/team-member2.jpg' %}" alt="Jane Smith">
-                    <h3>Jane Smith</h3>
-                    <p>Chief Technology Officer</p>
-                    <p>Jane is the technical powerhouse behind TechSol, leading our development team with her expertise in cutting-edge technologies.</p>
-                </div>
-                <div class="team-member">
-                    <img src="{% static 'images/team-member3.jpg' %}" alt="Michael Brown">
-                    <h3>Michael Brown</h3>
-                    <p>Head of Marketing</p>
-                    <p>With a creative flair and strategic vision, Michael ensures our solutions reach businesses that need them most.</p>
-                </div>
-            </section>
+<section id="team">
+    <h2>Meet the Team</h2>
+    <div class="team">
+        {% for member in team_members %}
+        <div class="team-member">
+            <img src="{{ member.image.url }}" alt="{{ member.name }}">
+            <h3>{{ member.name }}</h3>
+            <p>{{ member.role }}</p>
+            <p>{{member.image.url}}</p>
+            <p>{{ member.bio }}</p>
         </div>
-    </section>
+        {% endfor %}
+    </div>
+</section>
+
 
     <!-- Testimonials Section -->
+<!-- Testimonials Section -->
 <section id="testimonials">
-    <div class="container">
-        <h2>What Our Clients Say</h2>
-        <div class="testimonials">
-            <div class="testimonial">
-                <p>"TechSol transformed our business operations with their cutting-edge solutions. Their team is simply outstanding!"</p>
-                <h4>– Sarah Johnson, CEO of Innovatech</h4>
-            </div>
-            <div class="testimonial">
-                <p>"The professionalism and dedication TechSol showed in delivering our project were unmatched. Highly recommended!"</p>
-                <h4>– Mark Davis, CTO of GreenFuture</h4>
-            </div>
-            <div class="testimonial">
-                <p>"TechSol's solutions have been instrumental in our growth. Their expertise is truly top-notch!"</p>
-                <h4>– Emily White, Founder of StartSmart</h4>
-            </div>
+    <h2>What Our Clients Say</h2>
+    <div class="testimonials">
+        {% for testimonial in testimonials %}
+        <div class="testimonial">
+            <p>"{{ testimonial.content }}"</p>
+            <h4>– {{ testimonial.author }}, {{ testimonial.designation }}</h4>
         </div>
+        {% endfor %}
     </div>
 </section>
+
 
 <!-- Client Logos Section -->
+<!-- Client Logos Section -->
 <section id="client-logos">
-    <div class="container">
-        <h2>Our Valued Clients</h2>
-        <div class="logos">
-            <img src="{% static 'images/client1.png' %}" alt="Client 1">
-            <img src="{% static 'images/client2.png' %}" alt="Client 2">
-            <img src="{% static 'images/client3.png' %}" alt="Client 3">
-            <img src="{% static 'images/client4.png' %}" alt="Client 4">
-        </div>
+    <h2>Our Valued Clients</h2>
+    <div class="logos">
+        {% for logo in client_logos %}
+        <img src="{{ logo.logo.url }}" alt="{{ logo.alt_text }}">
+        {% endfor %}
     </div>
 </section>
-
     {% endblock %}
 
 <script src="{% static 'main.js' %}"></script>

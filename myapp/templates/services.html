@@ -18,7 +18,7 @@
         <nav>
             <a href="/">Home</a> |
             <a href="/about/">About Us</a> |
-            <a href="/services/">Services</a> |
+            <li><a href="{% url 'services' %}" class="{% if request.resolver_match.url_name == 'services' %}active{% endif %}">Services</a></li>
             <a href="/contact-us/">Contact Us</a> |
             <a href="/careers/">Careers</a> |
             <a href="/help/">Help</a> |
@@ -26,59 +26,36 @@
         </nav>
     </header>
 
-    <main>
         <section id="services">
+            {% for service in services %}
             <div class="service">
-                <h2>Web Development</h2>
-                <p>We build modern, responsive, and user-friendly websites tailored to your needs.</p>
+                <h2>{{ service.title }}</h2>
+                <p>{{ service.description }}</p>
             </div>
-            <div class="service">
-                <h2>Mobile App Development</h2>
-                <p>Create seamless and efficient mobile applications for Android and iOS platforms.</p>
-            </div>
-            <div class="service">
-                <h2>Cybersecurity</h2>
-                <p>Secure your digital assets with our advanced cybersecurity solutions.</p>
-            </div>
-            <div class="service">
-                <h2>Consulting</h2>
-                <p>Get expert advice on technology strategies and implementation.</p>
-            </div>
-            <div class="service">
-                <h2>Training</h2>
-                <p>Learn the latest technologies with our professional training programs.</p>
-            </div>
+            {% endfor %}
         </section>
-    </main>
+        
 
      <!-- Case Studies Section -->
 
-     <main>
-
      <section id="case-studies">
         <h2>Case Studies</h2>
-        <div class="case-study">
-            <img src="{% static 'images/case1.jpg' %}" alt="Case Study 1">
-            <h3>Project: E-commerce Website</h3>
-            <p>We developed a high-performance e-commerce platform for a global retailer.</p>
-        </div>
-        <div class="case-study">
-            <img src="{% static 'images/case2.jpg' %}" alt="Case Study 2">
-            <h3>Project: Mobile App for Healthcare</h3>
-            <p>Delivered a secure and user-friendly healthcare app for a medical organization.</p>
-        </div>
-        <div class="case-study">
+        {% for case in case_studies %}
+    <div>
+        {% if case.image %}
+            <img src="{{ case.image.url }}" alt="{{ case.title }}">
+        {% elif case.video %}
             <video controls>
-                <source src="{% static 'videos/case3.mp4' %}" type="video/mp4">
-                Your browser does not support the video tag.
+                <source src="{{ case.video.url }}" type="video/mp4">
             </video>
-            <h3>Project: Cybersecurity Audit</h3>
-            <p>Conducted a thorough cybersecurity audit for a financial institution.</p>
-            <button class="btn-quote">Request a Quote</button>
-            <button class="btn-learn">Learn More</button>
-        </div>
+        {% endif %}
+        <h3>{{ case.title }}</h3>
+        <p>{{ case.description }}</p>
+    </div>
+        {% endfor %}
+
     </section>
-    </main>
+    
     {% endblock %}
 
 <script src="{% static 'main.js' %}"></script>

@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h1>Submit a Support Ticket</h1>
+
+<!-- Main Form -->
+<form method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit">Submit Ticket</button>
+</form>
+
+<!-- Modal for Submitting Ticket -->
+<div id="ticket-modal" class="hidden">
+    <div class="modal-content">
+        <span id="close-modal">&times;</span>
+        <h2>Submit a Support Ticket</h2>
+        <form method="post">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <button type="submit">Submit Ticket</button>
+        </form>
+    </div>
+</div>
+
+<!-- Links and Buttons -->
+<a href="{% url 'submit_ticket' %}" class="btn btn-link">Submit Ticket</a>
+<button onclick="window.location.href='{% url 'submit_ticket' %}'" class="btn btn-primary">Submit a Support Ticket</button>
+
+
+
+{% endblock %}
