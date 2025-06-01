@@ -1,0 +1,37 @@
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Django stuff:
+*.log
+*.pot
+*.pyc
+*.sqlite3
+*.db
+*.env
+
+# Ignore virtual environments
+env/
+venv/
+.venv/
+
+# Ignore static and media only if generated or not needed
+# (You can comment them out if you want to push uploaded media)
+# static/
+# media/
+
+# If you want to include media files (like user-uploaded images), make sure they're not ignored
+!media/
+!static/
+!*.png
+!*.jpg
+!*.jpeg
+!*.svg
+
+# VS Code settings
+.vscode/
+
+# OS-specific files
+.DS_Store
+Thumbs.db

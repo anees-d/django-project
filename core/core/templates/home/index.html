@@ -1,0 +1,51 @@
+{%  extends "base.html" %}
+
+
+{% block start %}
+
+
+
+    <h1 class="text-center text-primary">This is the index page</h1>
+
+
+<a href="/contact">Contact</a> |
+<a href="/about">About</a>
+    
+
+    <!-- ✅ Bootstrap container added -->
+    <div class="container mt-4">
+        <table class="table table-bordered table-striped">
+            <thead class="table-dark">
+                <tr>
+                    <th>Sr No</th>
+                    <th>Name</th>
+                    <th>Age</th>
+                    <th>Can Vote</th>
+                </tr>
+            </thead>
+            <body>
+                {% for people in peoples %}
+                <tr>
+                    <td>{{ forloop.counter }}</td>
+                    <td>{{ people.name }}</td>
+                    <td>{{ people.age }}</td>
+
+                    <td {% if people.age  < 18 %} style ="background: red" {% endif %}>
+                        {% if people.age  >= 18 %}
+                        👍
+                        {% else %}
+
+                        👎
+
+                        {% endif %}
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+
+  
+
+{% endblock %}
+
+
