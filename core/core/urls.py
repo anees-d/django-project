@@ -23,12 +23,20 @@ from django.conf.urls.static import static
 
 
 urlpatterns = [
-    
     path('', home, name="home"), 
     path('recipes/', recipes, name="recipes"),
     path('contact/', contact,  name="contact"), 
     path('about/', about,  name="about"), 
     
+    path('recipe/update/<int:id>/', update_recipe, name='update_recipe'),
+    path('recipe/delete/<int:id>/', delete_recipe, name='delete_recipe'),
+    
+    path('register/', register, name='register'),
+    path('login/', login, name='login'),
+    path('logout/', logout, name='logout'),
+    
+    
+
     path('success-page/', success_page, name="success_page"),
     path('admin/', admin.site.urls),
 ]
