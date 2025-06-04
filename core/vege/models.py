@@ -45,6 +45,7 @@ class Student(models.Model):
     student_email = models.EmailField(unique=True)
     department = models.ForeignKey(Department, on_delete=models.CASCADE)
     student_age = models.IntegerField(default=18)
+    student_address = models.TextField(default = 100)
     is_active = models.BooleanField(default=True)
 
     def __str__(self):
