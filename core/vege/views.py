@@ -5,10 +5,13 @@ from django.contrib.auth.models import User
 from django.contrib.auth import authenticate, login as auth_login, logout as auth_logout
 from django.shortcuts import redirect
 from django.shortcuts import render, redirect, get_object_or_404
+from django.core.paginator import Paginator
+
 
 
 
 def recipes(request):
+    # POST logic for adding a recipe
     if request.method == "POST":
         recipe_name = request.POST.get('recipe_name')
         recipe_description = request.POST.get('recipe_description')
@@ -21,27 +24,43 @@ def recipes(request):
                 recipe_image=recipe_image
             )
             messages.success(request, "Recipe added successfully!")
-            return redirect('recipes')  # Optional, for clean redirect
+            return redirect('recipes')  # Refresh and show new recipe
         else:
             messages.error(request, "Please fill all fields")
 
-    recipes = Recipe.objects.all()
-    return render(request, 'recipes.html', {'recipes': recipes})
+    # GET logic for listing + searching + pagination
+    query = request.GET.get('q', '')
+    recipe_list = Recipe.objects.all()
+
+    if query:
+        recipe_list = recipe_list.filter(recipe_name__icontains=query)
+
+    paginator = Paginator(recipe_list, 5)  # 5 recipes per page
+    page_number = request.GET.get('page')
+    page_obj = paginator.get_page(page_number)
+
+    return render(request, 'recipes.html', {
+        'recipes': page_obj,
+        'query': query,
+    })
 
 # Update Recipe
 def update_recipe(request, id):
-    recipe = get_object_or_404(Recipe, id=id)
+    recipe = Recipe.objects.get(id=id)
 
-    if request.method == 'POST':
+    if request.method == "POST":
         recipe.recipe_name = request.POST.get('recipe_name')
         recipe.recipe_description = request.POST.get('recipe_description')
+
         if request.FILES.get('recipe_image'):
             recipe.recipe_image = request.FILES.get('recipe_image')
+
         recipe.save()
         messages.success(request, "Recipe updated successfully!")
-        return redirect('recipe')
+        return redirect("recipes")  # or wherever you list recipes
 
-    return render(request, 'update_recipe.html', {'recipe': recipe})
+    return render(request, "update_recipe.html", {"recipe": recipe})
+
 
 
 # Delete Recipe

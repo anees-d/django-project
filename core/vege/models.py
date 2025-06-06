@@ -16,14 +16,17 @@ class Recipe(models.Model):
 # =====================
 # Department Model
 # =====================
+
 class Department(models.Model):
     department = models.CharField(max_length=100)
+    date_of_established = models.DateField(default='2000-01-01')  # Set your desired default
 
     def __str__(self):
         return self.department
 
     class Meta:
         ordering = ['department']
+
 
 
 # =====================
