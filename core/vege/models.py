@@ -57,3 +57,9 @@ class Student(models.Model):
     class Meta:
         ordering = ['student_name']
         verbose_name = "student"
+
+
+# aggregate
+
+for queryset in queryset:
+    
