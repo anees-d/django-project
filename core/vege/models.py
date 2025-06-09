@@ -63,3 +63,4 @@ class Student(models.Model):
 
 for queryset in queryset:
     
+    
