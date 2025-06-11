@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Recipe, Department, StudentID, Student
+from .models import Recipe, Department, StudentID, Student, Subjects, SubjectMarks
 
 
 # Register your models here.
@@ -10,3 +10,8 @@ admin.site.register(Recipe)
 admin.site.register(Department)
 admin.site.register(StudentID)
 admin.site.register(Student)
+admin.site.register(Subjects)
+
+class SubjectMarkAdmin(admin.ModelAdmin):
+    list_display = ['student', 'subject', 'marks']
+admin.site.register(SubjectMarks, SubjectMarkAdmin)

@@ -37,6 +37,12 @@ class StudentID(models.Model):
 
     def __str__(self):
         return self.student_id
+    
+# subjects
+
+class Subjects(models.Model):
+    subject_name = models.CharField(max_length = 100)
+    
 
 
 # =====================
@@ -59,8 +65,19 @@ class Student(models.Model):
         verbose_name = "student"
 
 
-# aggregate
+# Marks
 
-for queryset in queryset:
+class SubjectMarks(models.Model):
+    student = models.ForeignKey(Student, related_name="studentmarks", on_delete=models.CASCADE)
+    subject = models.ForeignKey(Subjects, on_delete=models.CASCADE)
+    marks = models.IntegerField()
+    
+    def __str__(self) -> str:
+        return f'{self.student.student_name} {self.subject.subject_name}'
+     
+    class Meta:
+        unique_together = ['student' , 'subject']
+        
+
     
       

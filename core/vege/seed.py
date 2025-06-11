@@ -1,10 +1,46 @@
 from faker import Faker
 import random
-from .models import Department, Student, StudentID
+from .models import Department, Student, StudentID, SubjectMarks, Subjects
 
 fake = Faker()
 
-def seed_db(n=10) -> None:
+def create_subject_marks(n=100):
+    try:
+        student_objs = Student.objects.all()
+        subject_objs = Subjects.objects.all()
+
+        if not student_objs.exists():
+            print("No students found.")
+            return
+
+        if not subject_objs.exists():
+            print("No subjects found.")
+            return
+
+        count = 0
+        while count < n:
+            student = random.choice(student_objs)
+            subject = random.choice(subject_objs)
+
+            # Optional: Avoid duplicates
+            if not SubjectMarks.objects.filter(subject=subject, student=student).exists():
+                SubjectMarks.objects.create(
+                    subject=subject,
+                    student=student,
+                    marks=random.randint(0, 100)
+                )
+                count += 1
+                print(f"✅ Created mark {count}: Student={student.id}, Subject={subject.id}")
+            else:
+                continue
+
+        print(f"🎉 Successfully created {n} subject marks.")
+        
+    except Exception as e:
+        print(f"❌ Error creating subject marks: {e}")
+
+
+def seed_db(n=10):
     try:
         for i in range(n):
             department_list = Department.objects.all()
@@ -12,8 +48,7 @@ def seed_db(n=10) -> None:
                 print("No departments found.")
                 continue
 
-            random_index = random.randint(0, len(department_list) - 1)
-            department = department_list[random_index]
+            department = random.choice(department_list)
 
             student_id = f"STU-0{random.randint(100, 999)}"
             student_name = fake.name()
@@ -32,7 +67,7 @@ def seed_db(n=10) -> None:
                 student_address=student_address
             )
 
-        print(f"Successfully added {n} students.")
+        print(f"✅ Successfully added {n} students.")
 
     except Exception as e:
-        print(f"Error seeding database: {e}")
+        print(f"❌ Error seeding database: {e}")
