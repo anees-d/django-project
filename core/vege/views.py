@@ -126,5 +126,4 @@ def logout(request):
 
 def get_students(request):
     queryset = Student.objects.all()
-    return render(request, 'report/students.html', {'queryset' : queryset})
-    
+    return render(request, 'report/students.html', {'queryset': queryset})
