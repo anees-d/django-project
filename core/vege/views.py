@@ -6,6 +6,10 @@ from django.contrib.auth import authenticate, login as auth_login, logout as aut
 from django.shortcuts import redirect
 from django.shortcuts import render, redirect, get_object_or_404
 from django.core.paginator import Paginator
+from vege.models import Student
+from django.contrib.auth import logout as auth_logout
+
+
 
 
 
@@ -116,5 +120,11 @@ def logout(request):
     auth_logout(request)
     return redirect('login')
 
-from django.contrib.auth import logout as auth_logout
 
+#students
+
+
+def get_students(request):
+    queryset = Student.objects.all()
+    return render(request, 'report/students.html', {'queryset' : queryset})
+    
