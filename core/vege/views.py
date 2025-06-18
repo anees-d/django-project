@@ -125,5 +125,17 @@ def logout(request):
 
 
 def get_students(request):
+    query = request.GET.get('q', '')
     queryset = Student.objects.all()
-    return render(request, 'report/students.html', {'queryset': queryset})
+
+    if query:
+        queryset = queryset.filter(student_name__icontains=query)
+
+    paginator = Paginator(queryset, 10)  # Show 5 students per page
+    page_number = request.GET.get('page')
+    page_obj = paginator.get_page(page_number)
+
+    return render(request, 'report/students.html', {
+        'queryset': page_obj,
+        'query': query
+    })
