@@ -9,6 +9,8 @@ from django.core.paginator import Paginator
 from vege.models import Student, SubjectMarks
 from django.contrib.auth import logout as auth_logout
 from django.core.paginator import Paginator
+from vege.models import SubjectMarks, Student
+from django.db.models import Q,Sum
 
 
 
@@ -144,12 +146,18 @@ def get_students(request):
     })
     
     
+
 def see_marks(request, student_id):
-    queryset = SubjectMarks.objects.filter(student__student_id__student_id=student_id)
+    try:
+        # Get the student object using the passed student_id
+        student = Student.objects.get(student_id__id=student_id)
+        
+        # Get the related marks using the student object
+        queryset = SubjectMarks.objects.filter(student=student)
+        total_marks = queryset.aggregate(total_marks = Sum('marks'))
+        print( total_marks)
+    except Student.DoesNotExist:
+        queryset = []
 
-    # Add pagination (e.g., 5 marks per page)
-    paginator = Paginator(queryset, 5)
-    page_number = request.GET.get('page')
-    page_obj = paginator.get_page(page_number)
+    return render(request, 'report/see_marks.html', {'queryset': queryset, 'total_marks' : total_marks})
 
-    return render(request, 'report/see_marks.html', {'queryset': queryset})
