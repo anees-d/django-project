@@ -6,8 +6,11 @@ from django.contrib.auth import authenticate, login as auth_login, logout as aut
 from django.shortcuts import redirect
 from django.shortcuts import render, redirect, get_object_or_404
 from django.core.paginator import Paginator
-from vege.models import Student
+from vege.models import Student, SubjectMarks
 from django.contrib.auth import logout as auth_logout
+from django.core.paginator import Paginator
+
+
 
 
 
@@ -139,3 +142,14 @@ def get_students(request):
         'queryset': page_obj,
         'query': query
     })
+    
+    
+def see_marks(request, student_id):
+    queryset = SubjectMarks.objects.filter(student__student_id__student_id=student_id)
+
+    # Add pagination (e.g., 5 marks per page)
+    paginator = Paginator(queryset, 5)
+    page_number = request.GET.get('page')
+    page_obj = paginator.get_page(page_number)
+
+    return render(request, 'report/see_marks.html', {'queryset': queryset})
