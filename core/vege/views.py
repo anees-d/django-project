@@ -132,6 +132,11 @@ def logout(request):
 def get_students(request):
     query = request.GET.get('q', '')
     queryset = Student.objects.all()
+    
+    ranks = Student.objects.annotate(marks = Sum('studentmarks__marks')).order_by('-marks', '-student_age')
+    for rank in ranks:
+        print(rank.marks)
+    
 
     if query:
         queryset = queryset.filter(student_name__icontains=query)
@@ -147,6 +152,8 @@ def get_students(request):
     
     
 
+# Marks 
+
 def see_marks(request, student_id):
     try:
         # Get the student object using the passed student_id
@@ -154,10 +161,29 @@ def see_marks(request, student_id):
         
         # Get the related marks using the student object
         queryset = SubjectMarks.objects.filter(student=student)
-        total_marks = queryset.aggregate(total_marks = Sum('marks'))
-        print( total_marks)
+        total_marks = queryset.aggregate(total_marks=Sum('marks'))
+
+        current_rank = -1
+
+        # Rank logic
+        ranks = Student.objects.annotate(
+            marks=Sum('studentmarks__marks')
+        ).order_by('-marks', '-student_age')
+
+        i = 1
+        for rank in ranks:
+            if rank.id == student.id:
+                current_rank = i
+                break
+            i += 1
+
     except Student.DoesNotExist:
         queryset = []
+        total_marks = {'total_marks': 0}
+        current_rank = -1
 
-    return render(request, 'report/see_marks.html', {'queryset': queryset, 'total_marks' : total_marks})
-
+    return render(request, 'report/see_marks.html', {
+        'queryset': queryset,
+        'total_marks': total_marks,
+        'current_rank': current_rank,
+    })
