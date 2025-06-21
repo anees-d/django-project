@@ -1,6 +1,7 @@
 from faker import Faker
 import random
 from .models import Department, Student, StudentID, SubjectMarks, Subjects
+from django.db.models import Sum
 
 fake = Faker()
 
@@ -71,3 +72,25 @@ def seed_db(n=10):
 
     except Exception as e:
         print(f"❌ Error seeding database: {e}")
+
+def generate_report_card():
+    current_rank = -1
+    ranks = Student.objects.annotate(
+            marks=Sum('studentmarks__marks')
+        ).order_by('-marks', '-student_age')
+
+    i = 1
+    for rank in ranks:
+        ReportCard.objects.create(
+            student = rank
+            student_rank = i
+            
+        )
+        
+        i = i+1
+            
+            
+    class Meta:
+        unique_together = ['student_rank', 'date_of_report_card_generation']
+
+        

@@ -15,3 +15,11 @@ admin.site.register(Subjects)
 class SubjectMarkAdmin(admin.ModelAdmin):
     list_display = ['student', 'subject', 'marks']
 admin.site.register(SubjectMarks, SubjectMarkAdmin)
+
+class ReportCardAdmin(admin.ModelAdmin): 
+    list_display = ['student', 'student_rank', 'total_marks', 'date_of_report_card_generation']
+    
+    def total_marks(self, obj):
+        return obj.aggregate(Sum())
+
+admin.site.register(ReportCard, ReportCardAdmin)
