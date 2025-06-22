@@ -12,6 +12,10 @@ from django.core.paginator import Paginator
 from vege.models import SubjectMarks, Student, ReportCard
 from django.db.models import Q,Sum
 
+from django.contrib.auth import get_user_model
+
+User = get_user_model()
+
 
 
 
