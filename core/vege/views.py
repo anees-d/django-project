@@ -9,7 +9,7 @@ from django.core.paginator import Paginator
 from vege.models import Student, SubjectMarks
 from django.contrib.auth import logout as auth_logout
 from django.core.paginator import Paginator
-from vege.models import SubjectMarks, Student
+from vege.models import SubjectMarks, Student, ReportCard
 from django.db.models import Q,Sum
 
 
@@ -154,36 +154,25 @@ def get_students(request):
 
 # Marks 
 
+from .seed import generate_report_card
 def see_marks(request, student_id):
     try:
-        # Get the student object using the passed student_id
         student = Student.objects.get(student_id__id=student_id)
-        
-        # Get the related marks using the student object
         queryset = SubjectMarks.objects.filter(student=student)
         total_marks = queryset.aggregate(total_marks=Sum('marks'))
 
-        current_rank = -1
-
-        # Rank logic
-        ranks = Student.objects.annotate(
-            marks=Sum('studentmarks__marks')
-        ).order_by('-marks', '-student_age')
-
-        i = 1
-        for rank in ranks:
-            if rank.id == student.id:
-                current_rank = i
-                break
-            i += 1
+        # Get the report card (if it exists)
+        report_card = ReportCard.objects.filter(student=student).first()
 
     except Student.DoesNotExist:
+        student = None
         queryset = []
         total_marks = {'total_marks': 0}
-        current_rank = -1
+        report_card = None
 
     return render(request, 'report/see_marks.html', {
+        'student': student,
         'queryset': queryset,
         'total_marks': total_marks,
-        'current_rank': current_rank,
+        'report_card': report_card,
     })
