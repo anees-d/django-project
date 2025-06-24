@@ -1,7 +1,10 @@
 from django.shortcuts import render
 from django.http import HttpResponse
+from vege.seed import *
 
 def home(request):
+    
+    seed_db(100)
     
     peoples = [
         {'name': 'Anees', 'age': 26},

@@ -1,18 +1,47 @@
 from django.db import models
 from django.contrib.auth.models import User
+from django.utils.text import slugify
+import uuid
+
+
+
+
+
+class StudentManager(models.Manager):
+    def get_queryset(self):
+        return super().get_queryset().filter(is_deleted = False)
 
 # =====================
 # Recipe Model
 # =====================
+
 class Recipe(models.Model):
     recipe_name = models.CharField(max_length=100)
+    slug = models.SlugField(unique=True, blank=True)
     recipe_description = models.TextField()
     recipe_image = models.ImageField(upload_to='recipe')
     recipe_view_count = models.IntegerField(default=1)
+    is_deleted = models.BooleanField(default=False)
+
+    
+
+    def save(self, *args, **kwargs):
+        if not self.slug:
+            base_slug = slugify(self.recipe_name)
+            unique_slug = base_slug
+            num = 1
+
+            # Loop to ensure slug is unique
+            while Recipe.objects.filter(slug=unique_slug).exists():
+                unique_slug = f"{base_slug}-{num}"
+                num += 1
+
+            self.slug = unique_slug
+        
+        super().save(*args, **kwargs)
 
     def __str__(self):
         return self.recipe_name
-
 
 # =====================
 # Department Model
@@ -57,6 +86,11 @@ class Student(models.Model):
     student_age = models.IntegerField(default=18)
     student_address = models.TextField(default = 100)
     is_active = models.BooleanField(default=True)
+    is_deleted = models.BooleanField(default=False)
+
+    
+    objects = StudentManager()
+    admin_objects = models.Manager
 
     def __str__(self):
         return self.student_name

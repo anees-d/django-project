@@ -37,9 +37,13 @@ def recipes(request):
                 recipe_image=recipe_image
             )
             messages.success(request, "Recipe added successfully!")
+            
             return redirect('recipes')  # Refresh and show new recipe
-        else:
-            messages.error(request, "Please fill all fields")
+        
+        queryset = Recipe.objects.filter(is_deleted = False)
+        
+    else:
+        messages.error(request, "Please fill all fields")
 
     # GET logic for listing + searching + pagination
     query = request.GET.get('q', '')
