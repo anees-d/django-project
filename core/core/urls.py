@@ -40,6 +40,9 @@ urlpatterns = [
     path('success-page/', success_page, name="success_page"),
     path('students/', get_students, name="get_students"),
     path('see_marks/<int:student_id>/', see_marks, name='see_marks'),
+    
+    path('send-email/', send_email_to_client, name='send_email'),
+
 
     path('admin/', admin.site.urls),
 ]

@@ -1,51 +1,48 @@
-{%  extends "base.html" %}
-
+{% extends "base.html" %}
 
 {% block start %}
 
+<div class="container">
+    <h1 class="text-center text-primary">This is Send Email</h1>
 
+    <!-- Link this to your email-sending view -->
+    <a href="{% url 'send_email' %}" class="btn btn-success">Send email</a>
+</div>
 
-    <h1 class="text-center text-primary">This is the index page</h1>
-
-
+<!-- Optional navigation links -->
+<!-- 
 <a href="/contact">Contact</a> |
 <a href="/about">About</a>
-    
+-->
 
-    <!-- ✅ Bootstrap container added -->
-    <div class="container mt-4">
-        <table class="table table-bordered table-striped">
-            <thead class="table-dark">
-                <tr>
-                    <th>Sr No</th>
-                    <th>Name</th>
-                    <th>Age</th>
-                    <th>Can Vote</th>
-                </tr>
-            </thead>
-            <body>
-                {% for people in peoples %}
-                <tr>
-                    <td>{{ forloop.counter }}</td>
-                    <td>{{ people.name }}</td>
-                    <td>{{ people.age }}</td>
-
-                    <td {% if people.age  < 18 %} style ="background: red" {% endif %}>
-                        {% if people.age  >= 18 %}
+<!-- Bootstrap container for people table -->
+<div class="container mt-5">
+    <table class="table table-bordered table-striped">
+        <thead class="table-dark">
+            <tr>
+                <th>Sr No</th>
+                <th>Name</th>
+                <th>Age</th>
+                <th>Can Vote</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for people in peoples %}
+            <tr>
+                <td>{{ forloop.counter }}</td>
+                <td>{{ people.name }}</td>
+                <td>{{ people.age }}</td>
+                <td {% if people.age < 18 %} style="background: red;" {% endif %}>
+                    {% if people.age >= 18 %}
                         👍
-                        {% else %}
-
+                    {% else %}
                         👎
-
-                        {% endif %}
-                    </td>
-                </tr>
-                {% endfor %}
-            </tbody>
-        </table>
-
-  
+                    {% endif %}
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
 
 {% endblock %}
-
-

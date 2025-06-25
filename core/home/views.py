@@ -1,6 +1,13 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
+from django.core.mail import send_mail
+
 from django.http import HttpResponse
 from vege.seed import *
+from .utils import send_email_to_client
+
+def send_email(request):
+    send_email_to_client
+    return redirect('/')
 
 def home(request):
     
