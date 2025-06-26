@@ -5,15 +5,24 @@ from django.http import HttpResponse
 from vege.seed import *
 from .utils import send_email_to_client, send_email_with_attachment
 from django.conf import settings
+import os
 
-def send_email(request):
-    
-    subject = "This email from django server with attacment"
-    message = "Hey pleae find this attach with this email"
+
+def send_email_view(request):
+    subject = "Email with Attachment"
+    message = "Please find the attached Excel file."
     recipient_list = ["aneesofficial15@gmail.com"]
-    file_path = f"{settings.BASE_DIR}/main.xlsx"
+    
+
+
+    # Correct path to the file
+    file_path = r"D:\django-project\core\home\test.txt"
+
     send_email_with_attachment(subject, message, recipient_list, file_path)
     return redirect('/')
+
+
+
 
 def home(request):
     
