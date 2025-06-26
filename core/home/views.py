@@ -3,10 +3,16 @@ from django.core.mail import send_mail
 
 from django.http import HttpResponse
 from vege.seed import *
-from .utils import send_email_to_client
+from .utils import send_email_to_client, send_email_with_attachment
+from django.conf import settings
 
 def send_email(request):
-    send_email_to_client
+    
+    subject = "This email from django server with attacment"
+    message = "Hey pleae find this attach with this email"
+    recipient_list = ["aneesofficial15@gmail.com"]
+    file_path = f"{settings.BASE_DIR}/main.xlsx"
+    send_email_with_attachment(subject, message, recipient_list, file_path)
     return redirect('/')
 
 def home(request):
