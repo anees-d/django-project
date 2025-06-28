@@ -16,6 +16,11 @@ class Students(models.Model):
 class product(models.Model):
     pass
 
+
+# cars.com/get_speed/car_name = nexon
+# Nexon
+
+
 class Car(models.Model):
     car_name = models.CharField(max_length=500)
     speed = models.IntegerField(default=100)
